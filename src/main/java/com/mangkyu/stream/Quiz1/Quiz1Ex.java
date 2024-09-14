@@ -43,10 +43,11 @@ public class Quiz1Ex {
         // 참고) flatMap 연산: 각 요소를 여러 요소로 변환하고 평탄화하여 단일 스트림으로 만듭니다.
         //           ㄴ 역할: flatMap 연산은 각 요소를 여러 요소로 변환하고 이를 평탄화하여 단일 스트림으로 만듭니다. 즉, "중첩된 스트림을 평면적인 단일 스트림으로 만들어"줍니다.
         //           ㄴ 결과: flatMap은 이 배열의 요소들을 개별 스트림으로 만들어 평탄화합니다.
+        // 참고) flatMap 메서드는 스트림의 중첩 수준에 상관없이 평탄화할 수 있지만, 한 번의 호출로는 직접적으로 한 단계만 평탄화합니다.
+        // 만약 Stream<Stream<Stream<T>>> 같은 구조를 평탄화하려면, flatMap을 두 번 호출해야 합니다.
 
         // 4) collect(Collectors.toMap(...))
         //  : flatMap에서 얻어진 개별 취미 항목들을 수집하여 Map<String, Integer> 형태로 변환합니다. 각 취미의 출현 횟수를 계산합니다.
-
         return csvLines.stream()
                 .map(line -> line[1].replaceAll("\\s", ""))
                 .flatMap(hobbies -> Arrays.stream(hobbies.split(":")))
