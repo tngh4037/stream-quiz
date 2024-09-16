@@ -39,7 +39,7 @@ public class Quiz1 {
                     String str = intro.replace(targetStr, "");
                     return (intro.length() - str.length()) / targetStr.length();
                 })
-                .reduce(0, (beforeValue, newValue) -> beforeValue + newValue);
+                .reduce(0, (beforeValue, newValue) -> Integer.sum(beforeValue, newValue));
     }
 
     private List<String[]> readCsvLines() throws IOException {
